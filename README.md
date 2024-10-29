@@ -21,5 +21,17 @@ The notes for the CS1 2425 course at SICTC
 - Pull Data from GitHub
   - You will update your local machine files with what is on GitHub
 
+'''
+    Make sure you are in the root directory of the repo
+    git fetch
+    git pull
+'''
+
+
 - Miscellaneous
+    - Check the status of your repo (am I up to date?)
+''' 
+    git fetch
+    git status
+'''
 
