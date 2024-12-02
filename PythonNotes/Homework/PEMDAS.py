@@ -1,0 +1,11 @@
+# PEMDAS.py
+Question1 = print(2 +(10 * (10 - 2)**2) - 2)
+Question2 = print(((11 - 4) - (24 / 6)**2)*2**2)
+Question3 = print(((4 + 6 )**2 + 3 ) + 12 - 4**2)
+Question4 = print((15 / 5 )**2 + ((14 - 6) * 3**2))
+Question5 = print((3**2 +( 16 / 4 + 5**2)) - 5**2)
+Question6 = print(9 +( 4 * ( 4 + 2 )**2) - 7)
+Question7 = print(((4 + 6)**2 + 7 ) - 10 + 7**2)
+Question8 = print(((17 - 7 ) +(24 / 6 )**2) * 2**2)
+Question9 = print((5**2 + ( 15 / 5 + 2**2)) + 4**2)
+Question10 = print((15 / 5 )**2+ ((13 + 3 ) + 5**2))
