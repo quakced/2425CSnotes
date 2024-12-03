@@ -74,6 +74,32 @@ def change_name():
     with open("TheList.csv","w") as file:
         for eachLine in lines:
             file.write(eachLine)
+
+'''
+    Dictionary similar to json
+        "keyword" is associated with value
+        [0,1,2,3,4]
+        {"0":command, "1":command1,"2":command2"}
+'''
+
+def invalid_choice():
+    print("Invalid choice. Please select a valid option")
+
+def exit():
+    print("Goodbye!")
+raise SystemExit  #stops the program
+
+options = {
+   "display":display_list,
+    "2":add_to_list,
+    "3":count_items,
+    "4":change_name,
+    "5":exit
+    }
+
+
+
+
 #main loop
 while True:
     print("\n--- Santa's Nice and Naughty List ---")
@@ -97,3 +123,5 @@ while True:
         break
     else:
         print("Invalid choice. Please select a valid option.")
+
+

@@ -1,13 +1,11 @@
 import random
 
-randomNumber = random.randint(1,10)
-correctAns=False
-while(not(correctAns)):
-    x = int(input("Guess A Number 1-10!: "))
-    if x > randomNumber:
-         print("To High!")
-    elif x < randomNumber:
-        print("To Low")
+botGuess = random.randint(1,10)
+randomNumber = int(input("Input a random number from 1-10 that the Bot will guess: "))
+while(botGuess != randomNumber):
+    if botGuess > randomNumber:
+         print(f"{botGuess} To High!")
+    elif botGuess < randomNumber:
+        print(f"{botGuess} To Low")
     else:
-        print("You got the number!")
-        correctAns=True
+        print("The bot got your number!")
