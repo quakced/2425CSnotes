@@ -7,8 +7,7 @@ gameboard=[
     [" "," "," "],
     [" "," "," "],
     [" "," "," "]
-    
-] #this is a 2d list we can access each item
+]#this is a 2d list we can access each item
  
  # functions
  #print the board
@@ -21,12 +20,18 @@ gameboard=[
 7|8|9
 
 '''
+
 def printBoard(board):
+    board = ""
     for r in range(3):
         print(f"{board[r][0]}|{board[r][1]}|{board[r][2]}")
-        if r != 2:
+        if r&2 == 0:
             print("-"*5)
-            print(gameboard)
+        else:
+            print("|  "*4)
+        board +="\n"
+    print(board)
+
  # check for winner
 def checkForWinner(board):
     #row checker checker(horizontal checker)
@@ -35,7 +40,7 @@ def checkForWinner(board):
             print("winner winner chicken strip dinner")
             printBoard(board)
             return True
-    #vertical Checker1
+    #vertical Checker
     for r in range(len(board)):
         if(board[0][r]==board[1][r] and board[1][r]==board[2][r] and board[0][r]!=" "):
             print("winner winner chicken strip dinner")
@@ -44,8 +49,8 @@ def checkForWinner(board):
         
     #diagonal checker
     for r in range(len(board)):
-        if(board[0][0]==board[1][r] and board[1][r]==board[2][r] and board[0][0]!= " "):
-            if(board[2][0]==board[1][r] and board[1][r]==board[0][r] and board[2][0]!=" "):
+        if(board[0][0]==board[1][1] and board[1][1]==board[2][2] and board[0][0]!= " "):
+            if(board[2][0]==board[1][1] and board[1][1]==board[0][2] and board[2][0]!=" "):
                 print("winner winner chicken strip dinner")
             printBoard(board)
             return True
@@ -92,3 +97,5 @@ while(symbol!="Q"):
     else:
         symbol = "X" 
     
+    if symbol == "X":
+        symbol = "O" and board[]
