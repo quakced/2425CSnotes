@@ -3,6 +3,7 @@ import turtle as trtl
 painter = trtl.Turtle()
 wn=trtl.Screen()
 painter.speed(0)
+
 # stem
 painter.color("green")
 painter.pensize(15)
@@ -25,20 +26,21 @@ painter.turtlesize(2)
 painter.color("darkorchid")
 painter.goto(20,180)
 
-def drawingPetals(numOfPetals):
-    for eachpetal in range(numOfPetals):
-        painter.right(360/numOfPetals)
-        painter.fd(30)
+def drawingPetals(numOfPetals,size):
+    for eachPetal in range(numOfPetals):
+        painter.right(360/numOfPetals) #arc angle
+        painter.fd(size) #chord???
         painter.stamp()
-    
-drawingPetals(18,30)
 
+drawingPetals(18,30)
+    
 painter.color("blue")
 painter.goto(20,180-30)
 drawingPetals(12,30)
 
 painter.color("yellow")
-painter.goto(20,180-50)
+painter.goto(20,180-60)
 drawingPetals(6,30)
+
 
 wn.mainloop()

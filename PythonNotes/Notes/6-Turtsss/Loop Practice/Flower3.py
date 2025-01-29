@@ -3,13 +3,13 @@ import random
 
 painter = trtl.Turtle()
 wn=trtl.Screen()
-painter.speed(0)
+painter.speed(1)
 
-def randomColor():
-    R=random.random()
+def randomColor(turtleObj):
+    R=random.random() #generate a decimal
     G=random.random()
     B=random.random()
-    painter.color(R,G,B)
+    turtleObj.color(R,G,B)
     
 # stem
 painter.color("green")
@@ -33,25 +33,18 @@ painter.turtlesize(2)
 painter.color("darkorchid")
 painter.goto(20,180)
 
-def drawingPetals(numOfPetals):
-    for eachpetal in range(numOfPetals):
-        if eachpetal&2==0:
-            painter.color("blue")
-        else:
-            painter.color("darkorchid")
-
-        painter.right(360/numOfPetals)
-        painter.fd(30)
+def drawingPetals(numOfPetals,size):
+    for eachPetal in range(numOfPetals):
+        # if eachPetal%2==0:
+        #     painter.color("blue")
+        # else:
+        #     painter.color("darkorchid")
+        randomColor(painter)
+        painter.right(360/numOfPetals) #arc angle
+        painter.fd(size) #chord???
         painter.stamp()
-while True:    
-    drawingPetals(18,30)
+ 
+while True:
+    drawingPetals(18,30)   
 
-    painter.color("blue")
-    painter.goto(20,180-30)
-    drawingPetals(12,30)
-
-    painter.color("yellow")
-    painter.goto(20,180-50)
-    drawingPetals(6,30)
-
-    wn.mainloop()
+wn.mainloop()

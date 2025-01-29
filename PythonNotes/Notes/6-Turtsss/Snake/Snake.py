@@ -1,8 +1,10 @@
 #imports section
 import turtle as t
 import time
+import random as r
 #global car or objects or game configurations
 delay=0.1
+bodyParts=[]
 
 wn = t.Screen()
 wn.bgcolor("grey")
@@ -32,17 +34,28 @@ def move():
 #move()
 #move up
 def up():
-    head.direction="up"
+    if head.direction!="down":
+        head.direction="up"
 #MOVE DOWN
 def down():
-    head.direction="down"
+    if head.direction!="up":
+        head.direction="down"
 #move left
 def left():
-    head.direction="left"
+    if head.direction!="right":
+        head.direction="left"
 #move right
 def right():
-    head.direction="right"
+    if head.direction!="left":
+        head.direction="right"
 #game over
+def hideTheBodyParts():
+    global bodyParts #Python cheat - where you tell the f(x) that is a global var
+    head.teleport(0,0)
+    head.direction="stop"
+    for eachBodyPart in bodyParts:
+        eachBodyPart.hideturtle()
+    bodyParts=[]
 
 #events - event handler - gold/yellow blocks from MIT
 #event = when button clicked or when edge reached
@@ -65,6 +78,34 @@ while True:
     if head.ycor()>290 or head.ycor()<-290 or head.xcor()>290 or head.xcor()<-290:
         head.teleport(0,0)
         head.direction="stop"
+        
+    #food collision - distance 
+    if head.distance(food) < 20:
+        food.teleport(r.randint(-290,290), r.randint(-290,290))
+        bodyPart=t.Turtle(shape="square")
+        bodyPart.speed(0)
+        bodyPart.penup()
+        bodyParts.append(bodyPart)
+        
+    for i in range(len(bodyParts)-1,0,-1):
+        newX=bodyParts[i-1].xcor()#get the x cooridnate of next bodyPart
+        newY=bodyParts[i-1].ycor()#get the y cooridnate of next bodyPart
+        bodyParts[i].teleport(newX,newY)
+        
+    #move the neck to head
+    if len(bodyParts)>0:
+        newX = head.xcor()
+        newY = head.ycor()
+        neck = bodyParts[0]
+        neck.teleport(newX,newY)
+        
+        
     move()
+    
+    # check for body collision
+    #if the head is within some distance of another bodyPart
+    for eachBodyPart in bodyParts:
+        if head.distance(eachBodyPart) < 10:
+            hideTheBodyParts()
     time.sleep(delay)
-wn.mainloop()
+#wn.mainloop() - again mainloop keeps the window open

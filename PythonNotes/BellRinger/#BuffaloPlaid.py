@@ -14,7 +14,6 @@ for i in range(8):
             mikey.color("black")
          
         numOfSquares+=1
-        mikey.stamp()
-    print()
+        mikey.stamp(shape = "square")
 
 wn.mainloop()
