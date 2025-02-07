@@ -1,0 +1,27 @@
+/*selectors - html tags*/
+body{
+    background-color: chocolate;
+    color:blanchedalmond;
+}
+h1{
+    font-size: 30px;
+}
+p{
+    color:#F174D3;
+    font-family:fantasy;
+}
+footer{
+    background-color: crimson;
+    font-size: .5em;
+    text-align:center;
+}
+/*classes - generally for concepts*/
+.inherits{
+    text-shadow:line-through;
+}
+/*id - generally for specific items*/
+#specialP{
+    color:honeydew;
+    font-weight: bold;
+    text-decoration: wavy;
+}
