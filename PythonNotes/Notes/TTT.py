@@ -50,8 +50,12 @@ def spotIsTaken(symbol,board,row,col):
           board[row][col]=symbol
           return False
      return True
-def ai():
-    if spotIsTaken()
+def ai(row, symbol, col, board):
+    if spotIsTaken([2][2] or [0][0] or [2][0] or [0][2]):
+         symbol="O"
+         row=int(input(1))
+         col=int(input(1))
+         
 
 #main loop
 print("Welcome to Tic Tac Toe!")

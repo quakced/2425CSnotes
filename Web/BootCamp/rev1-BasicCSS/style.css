@@ -1,12 +1,12 @@
 body{
-    background-color:#f5f5f5;
+    background-color: #f5f5f5;
     color: #050505;
-    font-family: verdana, Arial, sans-serif;
+    font-family: Verdana, Arial, sans-serif;
     margin: 0;
 }
 header{
-    background-color:#333;
-    color: #fff;
+    background-color: #333;
+    color:#FFF;
     padding: 20px;
 }
 h1{
@@ -14,11 +14,11 @@ h1{
     line-height: 200%;
 }
 h2{
-    font-size:200%;
+    font-size: 200%;
 }
 nav{
-    font-weight: bold;
     text-align: center;
+    font-weight: bold;
 }
 nav a{
     text-decoration: none;
@@ -30,14 +30,16 @@ footer{
     color: #fff;
     padding: 20px;
 }
+
 /*classes*/
-.bootcamp{ /*apply a style to company name*/
+.bootcamp{  /*apply a style to the company name*/
     color: #40407A;
     font-style: italic;
 }
+
 /*id*/
 #wrapper{
-    margin-left:auto;
-    margin-right:auto;
-    width:80%;
+    margin-left: auto;
+    margin-right: auto;   /*margin-left and rt auto = center the content*/
+    width: 80%;
 }
