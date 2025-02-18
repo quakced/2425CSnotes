@@ -7,18 +7,20 @@
     <style>/*Embedded Styling*/</style>
 </head>
 <body><!--Inline styling when style is in tag-->
-    <div id="wrapper">
-    <header>
-        <h1>Code Central Bootcamp</h1>
+    <header class="home">
+        <a href = "index.html"><h1>Code Central Bootcamp</h1></a>
     </header>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="courses.html">Courses</a>
-        <a href="about.html">About Us</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
     </nav>
-    <main>
+    <div id="wrapper">
+        <main>
         <h2>Launch Your Coding Career</h2>
-        <img src="assets/Launch.png" alt="Launch" width="300px" height="300px" align="right">
+        <!--<img src="assets/Launch.png" alt="Launch" width="300px" height="300px" align="right">-->
         <p>Get job-ready with our practical coding bootcamps.  <span class="bootcamp">Code Central Bootcamp</span> focuses on hands-on training in Web Development, Data Science, and Python, ensuring you gain the real-world skills employers demand.  Leanr by doing, build a strong portfolio, and graduate prepared to make an immediate impact.</p>
 
         <h2>Our Courses</h2>
@@ -31,9 +33,9 @@
 
         <h2>Our Instructors</h2>    
         <ul>
-            <li><b>Addie Loveless</b> - Senior Web Developer with 10+ years of experience.</li>
-            <li><b>Arthur Turing</b> - Data Scientist specializing in machine learning</li>
-            <li><b>Steph Woznislack</b> - Experienced Python programmer and software engineer.</li>
+            <div class="onethird"><img src = "assets/WebDevInstructor.jpg" alt ="addie" width="100%"><p><b>Addie Loveless</b> - Senior Web Developer with 10+ years of experience.</p></div>
+            <div class="onethird"><img src = "assets/DataSciInstructor.jpg" alt ="addie" width="100%"><p><b>Arthur Turing</b> - Data Scientist specializing in machine learning</p></div>
+            <div class="onethird"><img src = "assets/PythonInstructor.jpg" alt ="addie" width="100%"><p><b>Steph Woznislack</b> - Experienced Python programmer and software engineer.</p></div>
         </ul>
 <h2>Testimonials</h2>
     <div class="onethird">
@@ -50,16 +52,17 @@
         <div id="hero">
             <img src="assets/Classroom.jpg" alt="mat" height=275px width=800px>
         </div>
-    </main>
-    <footer>
+        </main>
+        <footer>
         <p>
             &copy; 2025 <span class="bootcamp" style="color:#F5F5F5">Code Central Bootcamp</span><br>
             123 Main Street, Anytown USA<br>
             Contact: info@codecentral.com<br>
-            248-434-5508
+            <a href="tel:248-434-5508">248-434-5508</a>
+            <span id ="desktop">248-434-5508</span>
         </p>
-    </footer>
-</div>
+        </footer>
+    </div>
 </body>
 </html>
 
