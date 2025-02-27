@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="desctiption" content="Code Central Bootcamp - short desctiption of what this page is for">
+    <title>Code Central Home</title>
+    <link rel="stylesheet" href="style.css">  <!--External Styles-->
+    <style>/*Embedded Styling*/</style>
+</head>
+<body>
+  <header class = "content">
+    <h1>Code Central Bootcamp</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="Workshops.html">Workshops</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="store.html">store</a></li>
+  </ul>
+  </nav>
+  <div id="wrapper">
+  <main class="contact">
+    <h2> Contact Us</h2>
+    <p>Have a question or want to learn more about Code Central Bootcamp? Get in touch with us!</p>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text"name="name" id="name" required>
+        <!--name property relates to JS and label / id can relate to JS and CSS-->
+        <label for="email">Email:</label>
+        <input type="email"name="email" id="email" required>
+        <label for="message">Message:</label>
+        <!--rows and cols for textarea are default size-->
+        <textarea name="message" id="message" required rows="5" cols="25"></textarea>
+        <button type="submit">Send Message</button>
+        <!--<input type="submit" value="Send Message">-->
+
+    </form>
+</main>
+<footer>
+  <p>
+    &copy; 2023 Code Central Bootcamp</i><br>
+    123 Main Street, Anytown USA<br>
+    Contact: info@codecentral.com<br>
+    248-434-5508
+  </p>
+</footer>
+</div>
+</body>
+</html>

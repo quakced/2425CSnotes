@@ -9,11 +9,18 @@ bodyParts=[]
 wn = t.Screen()
 wn.bgcolor("grey")
 wn.setup(width=600,height=600)
+wn.title("Snake2.0")
 
 head=t.Turtle(shape="square")
 head.speed(0)
 head.penup()
 head.direction="stop"
+
+head2=t.Turtle(shape="square")
+head2.speed(0)
+head2.penup()
+head2.direction="stop"
+
 
 food = t.Turtle(shape="turtle")
 food.speed(0)
@@ -68,6 +75,11 @@ wn.onkeypress(down,"s")
 wn.onkeypress(left,"a")
 wn.onkeypress(right,"d")
 wn.listen()
+#Pause
+wn.onkeypress(pause,"p")
+#unpause
+wn.onkeypress(unpause,"o")
+#Snake 2.0
 
 
 #mainloop
