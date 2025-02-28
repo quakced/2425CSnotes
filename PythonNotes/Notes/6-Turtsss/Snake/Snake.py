@@ -11,15 +11,20 @@ wn.bgcolor("grey")
 wn.setup(width=600,height=600)
 wn.title("Snake2.0")
 
+
 head=t.Turtle(shape="square")
 head.speed(0)
 head.penup()
 head.direction="stop"
+head.goto(-150,230)
+head.write("W = up, S = Down, A = left, D = right, and p = pause", font=('Arial',12,'normal'))
+head.goto(-150,0)
 
 head2=t.Turtle(shape="square")
 head2.speed(0)
 head2.penup()
 head2.direction="stop"
+head2.goto(150,0)
 
 
 food = t.Turtle(shape="turtle")
@@ -75,11 +80,16 @@ wn.onkeypress(down,"s")
 wn.onkeypress(left,"a")
 wn.onkeypress(right,"d")
 wn.listen()
+#Snake 2.0
+def pause():
+    head.direction=0
+    bodyParts
+
 #Pause
 wn.onkeypress(pause,"p")
-#unpause
-wn.onkeypress(unpause,"o")
 #Snake 2.0
+def pause():
+    head.direction=0
 
 
 #mainloop
@@ -88,7 +98,7 @@ while True:
     #check for collision(wall, food, body)
     # wall colision
     if head.ycor()>290 or head.ycor()<-290 or head.xcor()>290 or head.xcor()<-290:
-        head.teleport(0,0)
+        head.teleport(-150,0)
         head.direction="stop"
         
     #food collision - distance 
