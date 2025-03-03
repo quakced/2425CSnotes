@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Box Gallery</title>
+    <style>
+        body{color:bisque;}
+        header{text-align: center;}
+        #gallery{
+            display:flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        img{
+            margin:1em;
+            box-shadow:10px 10px 10px #777777;
+        }
+        *{box-sizing: border-box;}
+    </style>
+</head>
+<body>
+    <header>Flexbox Gallery</header>
+    <div id="gallery">
+        <img src="black.png"alt="" width="200px" height="150px">
+        <img src="blue.png"alt="" width="200px" height="150px">
+        <img src="green.png"alt="" width="200px" height="150px">
+        <img src="pink.png"alt="" width="200px" height="150px">
+        <img src="red.png"alt="" width="200px" height="150px">
+        <img src="yellow.png"alt="" width="200px" height="150px">
+    </div>
+</body>
+</html>
