@@ -2,12 +2,12 @@
 import turtle as t
 import random as r
 import Leaderboard as lb
-
+import time
 #---global var and objects and game configuration
 
 wn = t.Screen()
-wn.bgcolor("black")
 wn.screensize(600,600)
+#wn.bgpic("turtle.gif")
 
 m = t.Turtle(shape ="turtle")
 m.shapesize(2)
@@ -33,9 +33,14 @@ score=0
 
 #---f(x)
 def mClicked(mouseX,mouseY): # add an features to this f(x) that trigger when m is clicked
+    global timer
     print(f"m was clicked{mouseX},{mouseY}")
     movem()
     updateScore()
+    if mClicked:
+        timer+=0.5
+    else:
+        timer-=1
 
 def movem():
     m.stamp()
@@ -54,6 +59,7 @@ def updateTimer():
     global timer
     timer-=1
     timeKeeper.clear()
+    
     if timer<=0:
         timeKeeper.write("Time is up!",font=fontSetup)
         m.speed(5)
@@ -73,18 +79,22 @@ def manageLeaderBoard():#game over update
         lb.updateLeaderboard("db.txt", hsNames, hsScores,currentName, score)
         
     lb.drawLeaderboard(False, hsNames, hsScores, scoreKeeper,score) 
-#while True:    Turtle has "clock" widget built in
-#    updateTmer()
-#    time.sleep(1)
-timeKeeper.getscreen().ontimer(updateTimer,interval)
-wn.ontimer(updateTimer,interval)
+# Accuracy
+
+
+while True:    #Turtle has "clock" widget built in
+    timeKeeper.getscreen().ontimer(updateTimer,interval)
+    wn.ontimer(updateTimer,interval)
+    updateTimer()
+    time.sleep(1)
+
 
 
 #---events - event handlers
-m.onclick(mClicked)
+    m.onclick(mClicked)
 
 #---mainloop
-wn.mainloop()
+    wn.mainloop()
 
 
 

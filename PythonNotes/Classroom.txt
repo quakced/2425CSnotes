@@ -1,0 +1,5 @@
+01110,Mike
+00111,Riley
+10001,Ezra
+01001,Eggvin
+00110,Johana
