@@ -3,6 +3,7 @@ import turtle as t
 import random as r
 import Leaderboard as lb
 import time
+from sklearn.metrics import accuracy_score
 #---global var and objects and game configuration
 
 wn = t.Screen()
@@ -37,10 +38,12 @@ def mClicked(mouseX,mouseY): # add an features to this f(x) that trigger when m 
     print(f"m was clicked{mouseX},{mouseY}")
     movem()
     updateScore()
+def addtime():
+    global timer
     if mClicked:
         timer+=0.5
     else:
-        timer-=1
+        updateTimer()
 
 def movem():
     m.stamp()
@@ -65,6 +68,7 @@ def updateTimer():
         m.speed(5)
         m.goto(1000,1000)
         manageLeaderBoard()
+        print(manageLeaderBoard)
     else:
         timeKeeper.write(f"Time: {timer}",font=fontSetup)
     # to run constantly - recursion to keep the timer running
