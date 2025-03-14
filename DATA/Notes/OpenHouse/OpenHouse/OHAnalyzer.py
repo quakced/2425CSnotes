@@ -1,12 +1,11 @@
 import pandas as pd
-import matplotlib.pylab as plt
 '''
     What schools came and how many from each
     What programs were visited and how many from each
     
 '''
-df=pd.read_csv("OriginalData/Foyer.csv", header=0)
+df = pd.read_csv("OriginalData/Foyer.csv",header=0)
 print(df)
 
-schools= df["school"].unique()
+schools = df["school"].unique()
 print(schools)
