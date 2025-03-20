@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <script>
+        //user pics a number between 0-5
+        var guess = prompt("guess a number btwn 1-5");
+        var secret = 4
+        //JS is alittle intelligent... it tries to figure out the data type
+        while(guess!=secret){
+            //html them if high or low
+            if (guess<secert){
+                alert("guessed to low")
+            }else if(guess>secret){
+                alert("guessed to high")
+            }
+            // allow them to guess again
+            var guess = prompt("guess a number btwn 1-5")
+        }
+            //if corrent stip script so body can load
+    </script>
+</head>
+<body>
+    <h1>Winner Winner Ckicked Dinner!</h1>
+</body>
+</html>
