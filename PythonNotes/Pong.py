@@ -2,8 +2,8 @@ import turtle as t
 import random as r
 
 #ALL CAP VAR means constant and doesn't change
-COURT_HEIGHT=600
-COURT_WIDTH=1000
+COURT_HEIGHT=980
+COURT_WIDTH=1820
 leftPoints,rightPoints=0,0
 fontSettings=("Arial",80,"bold")
 
@@ -17,7 +17,7 @@ ball.color("ivory")
 ball.penup()
 ball.speed(0)
 
-#left player or player blue
+#left player or player blue/player
 leftPlayer = t.Turtle("square")
 leftPlayer.color("blue")
 leftPlayer.penup()
@@ -121,7 +121,8 @@ def collideWithPaddle(paddle,ball):
         else:
             ball.setx(ball.xcor()+5)
         ball.fd(10)
-
+def doublespeed(paddle,ball):
+    if collideWithPaddle(set ball.speed=r.randint(1,2)):
 #TODO: something to think about, only one key can run at a time
 wn.onkeypress(resetBall,"r")
 wn.onkeypress(leftUp,"w")
