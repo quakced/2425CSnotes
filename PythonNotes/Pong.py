@@ -11,6 +11,7 @@ wn=t.Screen()
 wn.setup(width=COURT_WIDTH+100,height=COURT_HEIGHT+100)
 wn.bgcolor(.25,.25,.25)
 print(t.screensize())
+wn.tracer()
 
 ball = t.Turtle(shape="turtle")
 ball.color("ivory")
@@ -47,6 +48,12 @@ rScore.speed(0)
 rScore.teleport(COURT_WIDTH/4,COURT_HEIGHT/4)  #place the score in the top left area of the court
 rScore.write(rightPoints,font=fontSettings)
 
+#PLAYER = rightPlayer = rScore = int(7) or leftPlayer = lScore = int(7)
+
+#def GameOver(lScore, rScore):
+#    if lScore or rScore == int(7):
+#        wn.write(f"Game Over {PLAYER} Wins")
+    
 def drawCourt():
     border=t.Turtle(visible=False)
     border.color("white")
@@ -106,14 +113,10 @@ def leftUp():                                   #TODO: stop it from going across
     leftPlayer.sety(leftPlayer.ycor()+20)       #TODO: powerup???  slower or faster paddles?
 def leftDown():
     leftPlayer.sety(leftPlayer.ycor()-20)
-def rightUp():
-    rightPlayer.sety(rightPlayer.ycor()+20)
-def rightDown():
-    rightPlayer.sety(rightPlayer.ycor()-20)
 
 def collideWithPaddle(paddle,ball):
     #check for collision
-    if paddle.distance(ball)<20:    #from snake...
+    if paddle.distance(ball)<10:    #from snake...
         ball.seth(180-ball.heading())
         #to help prevent wall glitching
         if ball.xcor()>0:  #right paddle collision
@@ -121,14 +124,22 @@ def collideWithPaddle(paddle,ball):
         else:
             ball.setx(ball.xcor()+5)
         ball.fd(10)
-def doublespeed(paddle,ball):
-    if collideWithPaddle(set ball.speed=r.randint(1,2)):
+    
+def track_ball():
+    if rightPlayer.ycor() < ball.ycor() and abs(rightPlayer.ycor() - ball.ycor()) > 10:
+        rightPlayer.sety(rightPlayer.ycor() + 15)
+    elif rightPlayer.ycor() > ball.ycor() and abs(rightPlayer.ycor() - ball.ycor()) > 10:
+        rightPlayer.sety(rightPlayer.ycor() - 15)
+    wn.ontimer(track_ball, 20)  # check every 20ms
+def doublespeed(collideWidthPaddle,ball):
+    if  collideWidthPaddle(r.randint(1,2)==2):
+        ball.speed*2  
+    else:
+        ball.speed*1
 #TODO: something to think about, only one key can run at a time
 wn.onkeypress(resetBall,"r")
 wn.onkeypress(leftUp,"w")
 wn.onkeypress(leftDown,"s")
-wn.onkeypress(rightUp,"Up")
-wn.onkeypress(rightDown,"Down")
 wn.listen()
 
 #mainloop
