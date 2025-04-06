@@ -11,7 +11,7 @@ wn=t.Screen()
 wn.setup(width=COURT_WIDTH+100,height=COURT_HEIGHT+100)
 wn.bgcolor(.25,.25,.25)
 print(t.screensize())
-wn.tracer()
+wn.tracer(1)
 
 ball = t.Turtle(shape="turtle")
 ball.color("ivory")
@@ -25,6 +25,8 @@ leftPlayer.penup()
 leftPlayer.speed(0)
 leftPlayer.turtlesize(4,1)                   #turtlesize will stretch the turtle
 leftPlayer.setx(-COURT_WIDTH/2+10)
+if leftPlayer>=COURT_HEIGHT/2 or leftPlayer<=-COURT_HEIGHT/2:             #check for top or bottom wall collision
+        leftPlayer.seth(-leftPlayer.heading())
 
 lScore = t.Turtle(visible=False)
 lScore.color("blue")
@@ -39,8 +41,8 @@ rightPlayer.penup()
 rightPlayer.speed(0)
 rightPlayer.turtlesize(4,1)                   #turtlesize will stretch the turtle
 rightPlayer.setx(COURT_WIDTH/2-10)
-if rightPlayer == COURT_HEIGHT:
-    rightUp=False
+if rightPlayer>=COURT_HEIGHT/2 or rightPlayer<=-COURT_HEIGHT/2:             #check for top or bottom wall collision
+        rightPlayer.seth(-rightPlayer.heading())
 
 rScore = t.Turtle(visible=False)
 rScore.color("orange")
@@ -127,9 +129,9 @@ def collideWithPaddle(paddle,ball):
     
 def track_ball():
     if rightPlayer.ycor() < ball.ycor() and abs(rightPlayer.ycor() - ball.ycor()) > 10:
-        rightPlayer.sety(rightPlayer.ycor() + 15)
+        rightPlayer.sety(rightPlayer.ycor() + 10)
     elif rightPlayer.ycor() > ball.ycor() and abs(rightPlayer.ycor() - ball.ycor()) > 10:
-        rightPlayer.sety(rightPlayer.ycor() - 15)
+        rightPlayer.sety(rightPlayer.ycor() - 10)
     wn.ontimer(track_ball, 20)  # check every 20ms
 def doublespeed(collideWidthPaddle,ball):
     if  collideWidthPaddle(r.randint(1,2)==2):
@@ -144,6 +146,7 @@ wn.listen()
 
 #mainloop
 drawCourt()
+track_ball()
 resetBall()
 moveTheBall()
 wn.mainloop()
