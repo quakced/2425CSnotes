@@ -82,7 +82,19 @@ def manageLeaderBoard():#game over update
         currentName = input("Congrats, you made the leader board!\n\tEnter your name: ")
         lb.updateLeaderboard("db.txt", hsNames, hsScores,currentName, score)
         
-    lb.drawLeaderboard(False, hsNames, hsScores, scoreKeeper,score) 
+    lb.drawLeaderboard(False, hsNames, hsScores, scoreKeeper,score)
+
+def changebkgcolor():
+    if mClicked == m:
+        wn.bgcolor(r.randint(red, black, white))
+
+def shrink():
+    if mClicked:
+        m.shapesize/2
+    elif mClicked>=3:
+        m.shapesize*2*3
+shrink()
+
 # Accuracy
 
 
@@ -98,6 +110,9 @@ while True:    #Turtle has "clock" widget built in
     m.onclick(mClicked)
 
 #---mainloop
+    movem()
+    manageLeaderBoard()
+    changebkgcolor()
     wn.mainloop()
 
 
