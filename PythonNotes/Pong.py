@@ -50,12 +50,6 @@ rScore.speed(0)
 rScore.teleport(COURT_WIDTH/4,COURT_HEIGHT/4)  #place the score in the top left area of the court
 rScore.write(rightPoints,font=fontSettings)
 
-#PLAYER = rightPlayer = rScore = int(7) or leftPlayer = lScore = int(7)
-
-#def GameOver(lScore, rScore):
-#    if lScore or rScore == int(7):
-#        wn.write(f"Game Over {PLAYER} Wins")
-    
 def drawCourt():
     border=t.Turtle(visible=False)
     border.color("white")
@@ -103,6 +97,15 @@ def moveTheBall():                                      #while(conditional state
         
     wn.ontimer(moveTheBall,20)                              #iterator
 
+def GameOver(lScore, rScore):
+    PLAYER = leftPlayer or rightPlayer == int(7) 
+    while True:
+        if lScore or rScore == int(7):
+            wn.color(green)
+            wn.write(f"Game Over {PLAYER} Wins!")
+            wn.onkeypress("space")
+        break
+GameOver()
 def resetBall():
     ball.setpos(0,0)
     #flip a coin on who serves
@@ -142,6 +145,7 @@ def doublespeed(collideWidthPaddle,ball):
 wn.onkeypress(resetBall,"r")
 wn.onkeypress(leftUp,"w")
 wn.onkeypress(leftDown,"s")
+wn.onkeypress("space")
 wn.listen()
 
 #mainloop
