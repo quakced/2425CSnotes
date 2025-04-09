@@ -101,7 +101,11 @@ def GameOver(lScore, rScore):
     PLAYER = leftPlayer or rightPlayer == int(7) 
     while True:
         if lScore or rScore == int(7):
+<<<<<<< HEAD
             wn.color("green")
+=======
+            wn.color(green)
+>>>>>>> 452a8a2b4ca59ace7ffae23fa5086aa9d5064fd7
             wn.write(f"Game Over {PLAYER} Wins!")
             wn.onkeypress("space")
         break
