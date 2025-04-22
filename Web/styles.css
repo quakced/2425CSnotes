@@ -1,0 +1,45 @@
+h1{
+    justify-content: center;
+    align-items: center;
+}
+body{
+    background-color:lightcoral;
+    width: 1280px;
+    height: 1396px;
+}
+p, h1, h2, h3{
+    color: white;
+}
+.image{
+    height: 312px;
+    width: 312px;
+    flex-shrink:0;
+    border-radius: 312px;
+    background: url(<path-to-image>) lightgray -4px -23.888px / 102.005% 153.007% no-repeat;
+}
+.imagetext{
+    width: 567px;
+    color: #FFF;
+    font-family: Judson;
+    font-size: 62px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 78px; /* 125.806% */
+}
+h1{
+    color: #FFF;
+    font-family: Judson;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.bottom{
+    text-align:center;
+}
+.middle{
+    flex-direction: column;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    text-align: right;
+}
