@@ -3,7 +3,7 @@ import turtle as t
 import random as r
 import Leaderboard as lb
 import time
-from sklearn.metrics import accuracy_score
+#from sklearn.metrics import accuracy_score
 #---global var and objects and game configuration
 
 wn = t.Screen()
@@ -83,17 +83,19 @@ def manageLeaderBoard():#game over update
         lb.updateLeaderboard("db.txt", hsNames, hsScores,currentName, score)
         
     lb.drawLeaderboard(False, hsNames, hsScores, scoreKeeper,score)
-
-def changebkgcolor():
-    if mClicked == m:
-        wn.bgcolor(r.randint(red, black, white))
-
+colors=["red", "black", "white"]
+def change_bg_color(colors):
+    new_color = r.randint.choice(colors)
+    wn.bgcolor(new_color)
 def shrink():
-    if mClicked:
-        m.shapesize/2
-    elif mClicked>=3:
-        m.shapesize*2*3
-shrink()
+  if m.shapesize > 1:
+        m.shapesize -= 0.5
+        m.turtlesize(m)
+  elif m.shapesize < 0.5:
+      m.shapesize +=2
+      m.turtlesize(m)
+            
+    
 
 # Accuracy
 
@@ -112,7 +114,8 @@ while True:    #Turtle has "clock" widget built in
 #---mainloop
     movem()
     manageLeaderBoard()
-    changebkgcolor()
+    m.onclick(shrink)
+    m.onclick(change_bg_color)
     wn.mainloop()
 
 
