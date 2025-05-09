@@ -3,7 +3,7 @@ import random
 from Input import Input
 from User import User
 from Entry import Entry
-
+import csv
 result=""
 genPassword=""
 passList=[]
@@ -11,16 +11,6 @@ masterUserList=[]
 masterCategoryList=[]
 masterEntryList=[]
 s=7
-def database():
-    global answer
-    print("1. Add a new Account")
-    print("2. Generate Password")
-    print("3. Categories")
-    print("4. view Password")
-    print("5. Create Entry")
-    print("6. Logout")
-    answer = input("What would you like to do? ")
-if answer == 1:
     
     
 #generates password if called on to
@@ -103,35 +93,121 @@ def createEntry():
         fileToWriteTo.close()
     elif user =="n":
         pass
-            
-#starting point of code asking to login or register
-user=Input.getCorrectInput(["login","register"],"Login or Register? (login/register) ")
-if user =="register":
-    print("registration")
-    with open("data.csv", "w") as file:
-        username =input("What do you want your username to be? ")
-        password =input("What is your password goint to be? ")
-        firstname =input("What is your first name? ")
-        lastname =input("What is your Last name? ")
-        file.write (f"{username},{password},{firstname},{lastname}")
+# modify account info        
+def modify():
+    global first, last
+    found = False
+    updated_data =[]
+    user=Input.getCorrectInput(["y","n"],"Would you like to modify your account information?(y/n) ")
+    if user =="y":
+        username = input("username: ")
+        password = input("Password: ")
+        with open("data.csv", "r") as file:
+                reader = csv.reader(file)
+                for row in reader:
+                    if len(row) >= 4 and row[0] == username and row[1] == password:
+                        found = True
+                        first = row[2]
+                        last = row[3]
+                        print("You are in!")
+                        print("what would you like to modify (firstname, lastname, username, password). If you don't want to modify a certain thing just leave it how it was. ")
+                        newusername = input("Newusername: ")
+                        newPassword = input("Newpassword: ")
+                        newfirst = input("New First name: ")
+                        newlast = input("New last name: ")
+                        confirmusername = input("confirm your username: ")
+                        confirmpassword = input("confrim your password: ")
+                        confirmfirst = input("confirm your first name: ")
+                        confirmlast = input("confirm your last name: ")
+                        if newusername != confirmusername and newPassword != confirmpassword and newfirst != confirmfirst and newlast != confirmlast:
+                            print("The creditionals do not match...")
+                            return
+                        first = row[2]
+                        last = row[3]
+                        updated_data.append([newusername, newPassword, first, last])
+                    else:
+                        updated_data.append(row)
+        if not found:
+            print("Current credtials not found.")
+        with open("data.csv", "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerows(updated_data)
+        print("Credientials updated successfully")
+    if user == "n":
+        database()
         
-elif user =="login":
-    print("login")
-    with open("data.csv","r") as file:
-        username =input("username: ")
-        password =input("Password: ")
-        firstname =input("First name: ")
-        lastname =input("Last name: ")
-        file.read (f"{username},{password},{firstname},{lastname}")
-        data = file.read (f"{username},{password},{firstname},{lastname}")
-    if data == True:
-        print("You are logined in!")
-    else:
-        print("One or more user credentials are wrong...")
-        username =input("username: ")
-        password =input("Password: ")
-        firstname =input("First name: ")
-        lastname =input("Last name: ")
+#starting point of code asking to login or register
+def login():
+    global first, last  # So they can be used in createEntry, etc.
+    user = Input.getCorrectInput(["login", "register"], "Login or Register? (login/register) ")
 
+    if user == "register":
+        print("Registration")
+        username = input("What do you want your username to be? ")
+        password = input("What is your password going to be? ")
+        first = input("What is your first name? ")
+        last = input("What is your last name? ")
 
-quit()
+        with open("data.csv", "a", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow([username, password, first, last])
+        print("Registration successful! Please log in.")
+        login()
+
+    elif user == "login":
+        attempts = 0
+        max_attempts = 3
+
+        while attempts < max_attempts:
+            print("Login")
+            username = input("Username: ")
+            password = input("Password: ")
+
+            with open("data.csv", "r") as file:
+                reader = csv.reader(file)
+                for row in reader:
+                    if len(row) >= 4 and row[0] == username and row[1] == password:
+                        first = row[2]
+                        last = row[3]
+                        print("You are logged in!")
+                        database()
+                        return
+
+            attempts += 1
+            print(f"Incorrect credentials. Attempts left: {max_attempts - attempts}")
+
+        print("Too many failed attempts. Exiting program.")
+        quit()
+
+def database():
+    while True:
+        print("1. Add a new Account")
+        print("2. Generate Password")
+        print("3. View Password")
+        print("4. Categories")
+        print("5. Create Entry")
+        print("6. Modify account")
+        print("7. Logout")
+        answer = input("What would you like to do? ")
+
+        if answer == "1":
+            login()
+        elif answer == "2":
+            generatePW()
+            print(f"Generated password: {passList[-1]}")
+        elif answer == "3":
+            viewPassword()
+        elif answer == "4":
+            getCategories()
+        elif answer == "5":
+            createEntry()
+        elif answer == "6":
+            modify()
+        elif answer == "7":
+            print("Logging out.")
+            login()
+            
+        else:
+            print("Invalid option. Please choose again.")
+            database()
+login()
